@@ -17,7 +17,6 @@ highlight_color = (200, 200, 200)
 
 menu_options = [
     {"text": "Single Player", "highlighted": True},
-    {"text": "2 Player", "highlighted": False},
     {"text": "High Score", "highlighted": False},
     {"text": "Exit", "highlighted": False},
 ]
@@ -43,13 +42,9 @@ while running:
                     print("Starting Single Player game...")
                     exec(open("TetrisMain.py").read())
                 elif selected_option == 1:
-                    # Start 2 player Game
-                    print("Starting Multiplayer Game...")
-                    exec(open("MultiTetris.py").read())
-                elif selected_option == 2:
-                    # Show settings
                     print("Showing Highscore...")
-                elif selected_option == 3:
+                    f = open("score.txt", "rt")
+                elif selected_option == 2:
                     # Exit
                     running = False
     

@@ -1,7 +1,5 @@
 from random import randrange as rand
 import pygame, sys
-import atexit
-import subprocess
 
 
 
@@ -170,6 +168,11 @@ class TetrisApp(object):
 							break
 					else:
 						break
+
+
+
+					if remove_row: True
+						
 	
 	def rotate_stone(self):
 		if not self.gameover and not self.paused:
