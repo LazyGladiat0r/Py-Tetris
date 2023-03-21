@@ -1,6 +1,9 @@
 from random import randrange as rand
 import pygame, sys
+import sys
+import os
 
+pygame.init()
 
 
 config = {
@@ -10,6 +13,8 @@ config = {
 	'delay':	750,
 	'maxfps':	30
 }
+
+score = 0
 
 colors = [
 (0,   0,   0  ),
@@ -43,6 +48,11 @@ tetris_shapes = [
 	[[7, 7],
 	 [7, 7]]
 ]
+
+def draw_score(score):
+    font = pygame.font.SysFont(None, 36)
+    score_text = font.render("Score: " + str(score), True, (255, 255, 255))
+    screen.blit(score_text, (10, 10))
 
 def rotate_clockwise(shape):
 	return [ [ shape[y][x]
@@ -89,6 +99,8 @@ class TetrisApp(object):
 		                                             
 		self.init_game()
 	
+while True:
+
 	def new_stone(self):
 		self.stone = tetris_shapes[rand(len(tetris_shapes))]
 		self.stone_x = int(config['cols'] / 2 - len(self.stone[0])/2)
@@ -168,11 +180,11 @@ class TetrisApp(object):
 							break
 					else:
 						break
+					
+					
+	draw_score(score)
 
-
-
-					if remove_row: True
-						
+	pygame.display.update()
 	
 	def rotate_stone(self):
 		if not self.gameover and not self.paused:
@@ -220,6 +232,8 @@ class TetrisApp(object):
 					                 (self.stone_x,
 					                  self.stone_y))
 			pygame.display.update()
+			
+
 			
 			for event in pygame.event.get():
 				if event.type == pygame.USEREVENT+1:
